@@ -4,8 +4,8 @@
 
 <% require 'kaesen' 
   b = Kaesen::Bitflyer.new do |config| %>
-  <% config.api_key = "Ht8dC4akGEnVNNut8p6irQ" %>
-  <% config.api_secret = "N/LT/6o9joYnhMUNKeYfXZDJo5H7w4J+18xICanV6cs=" %>
+  <% config.api_key = ENV["bitflyer_public"] %>
+  <% config.api_secret = ENV["bitflyer_secret"] %>
 <% end %>
 
 <% require 'date'
