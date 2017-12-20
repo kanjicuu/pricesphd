@@ -1,0 +1,31 @@
+<%= render "partial/navbar" %>
+
+
+
+<% require 'kaesen' 
+  b = Kaesen::Bitflyer.new do |config| %>
+  <% config.api_key = "Ht8dC4akGEnVNNut8p6irQ" %>
+  <% config.api_secret = "N/LT/6o9joYnhMUNKeYfXZDJo5H7w4J+18xICanV6cs=" %>
+<% end %>
+
+<% require 'date'
+%>
+
+<% public_client = Bitflyer.http_public_client %>
+
+
+
+
+<h1>BitFlyer</h1>
+<div>
+<p>ビットコインの価格(<%= Time.now %>)</p>
+<p>買い価格<%= public_client.ticker["best_ask"] %></p>
+<p>価格差 <%= public_client.ticker["best_ask"] - public_client.ticker["best_bid"] %></p>
+<p>売り価格<%= public_client.ticker["best_bid"] %></p>
+
+
+<% if  public_client.ticker["best_ask"] - public_client.ticker["best_bid"] > 100 %>
+<% end %> 
+</div>
+
+<%= render "partial/todolist" %>
